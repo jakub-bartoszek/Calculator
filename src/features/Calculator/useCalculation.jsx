@@ -1,62 +1,84 @@
 import { useEffect, useState } from "react";
 
 export const useCalculation = () => {
-	const [calculation, setCalculation] = useState({
-		firstNumber: "",
-		operator: "",
-		secondNumber: ""
-	});
-
+	const [calculation, setCalculation] = useState([]);
+	const [displayedCalculation, setDisplayedCalculation] = useState(
+		[]
+	);
+	const [isBeforeNumber, setIsBeforeNumber] = useState(true);
 	const [result, setResult] = useState(null);
+	const [usedBeforeBracket, setUsedBeforeBracket] = useState(false);
 
-	const setOperatorSign = () => {
-		switch (calculation.operator) {
-			case "+":
-				return "+";
-			case "-":
-				return "-";
-			case "×":
-				return "*";
-			case ":":
-				return "/";
-			default:
-				return "";
+	const insertNumber = (number) => {
+		setCalculation((calculation) => [...calculation, number]);
+		setDisplayedCalculation((displayedCalculation) => [
+			...displayedCalculation,
+			number
+		]);
+		setIsBeforeNumber(true);
+		try {
+			setResult(eval([...calculation, number].join("")));
+		} catch {
+			setResult("Error");
 		}
 	};
 
-	const insertNumber = (number) => {
-		if (calculation.operator === "") {
-			setCalculation({
-				firstNumber: calculation.firstNumber + number,
-				operator: calculation.operator,
-				secondNumber: calculation.secondNumber
-			});
-			setResult(calculation.firstNumber + number);
+	const insertBracket = () => {
+		if (usedBeforeBracket === false) {
+			setCalculation((calculation) => [...calculation, "("]);
+			setDisplayedCalculation((displayedCalculation) => [
+				...displayedCalculation,
+				"("
+			]);
+			setUsedBeforeBracket(true);
 		} else {
-			setCalculation({
-				firstNumber: calculation.firstNumber,
-				operator: calculation.operator,
-				secondNumber: calculation.secondNumber + number
-			});
-
-			setResult(
-				eval(
-					`${calculation.firstNumber}${setOperatorSign()}${
-						calculation.secondNumber + number
-					}`
-				)
-			);
+			setCalculation((calculation) => [...calculation, ")"]);
+			setDisplayedCalculation((displayedCalculation) => [
+				...displayedCalculation,
+				")"
+			]);
 		}
 	};
 
 	const insertOperator = (operator) => {
-		if (calculation.secondNumber === "") {
-			setCalculation({
-				firstNumber: calculation.firstNumber,
-				operator: operator,
-				secondNumber: calculation.secondNumber
-			});
+		if (isBeforeNumber === true) {
+			const setMathSign = () => {
+				switch (operator) {
+					case "+":
+						return "+";
+					case "-":
+						return "-";
+					case "*":
+						return "×";
+					case "/":
+						return ":";
+					default:
+						return "";
+				}
+			};
+
+			setCalculation((calculation) => [...calculation, operator]);
+			setDisplayedCalculation((displayedCalculation) => [
+				...displayedCalculation,
+				setMathSign()
+			]);
 		}
+		setIsBeforeNumber(false);
 	};
-	return { calculation, insertNumber, insertOperator, result };
+
+	const clearAll = () => {
+		setCalculation([]);
+		setDisplayedCalculation([]);
+		setResult(null);
+	};
+
+	return {
+		calculation,
+		insertNumber,
+		insertOperator,
+		result,
+		displayedCalculation,
+		insertBracket,
+		clearAll
+	};
 };

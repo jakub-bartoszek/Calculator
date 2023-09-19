@@ -1,10 +1,10 @@
 import { CurrentCalculation, Result, Wrapper } from "./styled";
 
-export const Display = ({ calculation, result }) => {
+export const Display = ({ displayedCalculation, result }) => {
 	return (
 		<Wrapper>
 			<Result>{result}</Result>
-			<CurrentCalculation>{Object.values(calculation)}</CurrentCalculation>
+			<CurrentCalculation>{displayedCalculation}</CurrentCalculation>
 		</Wrapper>
 	);
 };
