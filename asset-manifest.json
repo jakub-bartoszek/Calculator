@@ -1,15 +1,12 @@
 {
   "files": {
-    "main.css": "/jakub-bartoszek-developer.github.io/calculator-react/static/css/main.e6c13ad2.css",
-    "main.js": "/jakub-bartoszek-developer.github.io/calculator-react/static/js/main.293ff153.js",
-    "static/js/787.207e0cf3.chunk.js": "/jakub-bartoszek-developer.github.io/calculator-react/static/js/787.207e0cf3.chunk.js",
-    "index.html": "/jakub-bartoszek-developer.github.io/calculator-react/index.html",
-    "main.e6c13ad2.css.map": "/jakub-bartoszek-developer.github.io/calculator-react/static/css/main.e6c13ad2.css.map",
-    "main.293ff153.js.map": "/jakub-bartoszek-developer.github.io/calculator-react/static/js/main.293ff153.js.map",
-    "787.207e0cf3.chunk.js.map": "/jakub-bartoszek-developer.github.io/calculator-react/static/js/787.207e0cf3.chunk.js.map"
+    "main.js": "/Calculator-React/static/js/main.e61b95ca.js",
+    "static/js/787.207e0cf3.chunk.js": "/Calculator-React/static/js/787.207e0cf3.chunk.js",
+    "index.html": "/Calculator-React/index.html",
+    "main.e61b95ca.js.map": "/Calculator-React/static/js/main.e61b95ca.js.map",
+    "787.207e0cf3.chunk.js.map": "/Calculator-React/static/js/787.207e0cf3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.293ff153.js"
+    "static/js/main.e61b95ca.js"
   ]
 }
