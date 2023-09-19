@@ -5,7 +5,8 @@ export const Keyboard = ({
 	insertNumber,
 	insertOperator,
 	insertBracket,
-	clearAll
+	clearAll,
+	calculate
 }) => {
 	return (
 		<Wrapper>
@@ -28,7 +29,7 @@ export const Keyboard = ({
 			<Number>+/-</Number>
 			<Number onClick={() => insertNumber(0)}>0</Number>
 			<Number onClick={() => insertNumber(".")}>,</Number>
-			<Equals>=</Equals>
+			<Equals onClick={() => calculate()}>=</Equals>
 		</Wrapper>
 	);
 };

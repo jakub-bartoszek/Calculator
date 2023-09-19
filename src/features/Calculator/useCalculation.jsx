@@ -2,12 +2,19 @@ import { useEffect, useState } from "react";
 
 export const useCalculation = () => {
 	const [calculation, setCalculation] = useState([]);
+
 	const [displayedCalculation, setDisplayedCalculation] = useState(
 		[]
 	);
 	const [isBeforeNumber, setIsBeforeNumber] = useState(true);
 	const [result, setResult] = useState(null);
 	const [usedBeforeBracket, setUsedBeforeBracket] = useState(false);
+
+	const calculate = () => {
+		setCalculation([result]);
+		setDisplayedCalculation([result]);
+		console.log(result)
+	};
 
 	const insertNumber = (number) => {
 		setCalculation((calculation) => [...calculation, number]);
@@ -16,11 +23,6 @@ export const useCalculation = () => {
 			number
 		]);
 		setIsBeforeNumber(true);
-		try {
-			setResult(eval([...calculation, number].join("")));
-		} catch {
-			setResult("Error");
-		}
 	};
 
 	const insertBracket = () => {
@@ -72,6 +74,14 @@ export const useCalculation = () => {
 		setResult(null);
 	};
 
+	useEffect(() => {
+		try {
+			setResult(eval(calculation.join("")));
+		} catch {
+			setResult("");
+		}
+	}, [calculation]);
+
 	return {
 		calculation,
 		insertNumber,
@@ -79,6 +89,7 @@ export const useCalculation = () => {
 		result,
 		displayedCalculation,
 		insertBracket,
-		clearAll
+		clearAll,
+		calculate
 	};
 };

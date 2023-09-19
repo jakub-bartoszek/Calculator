@@ -5,13 +5,13 @@ import { useCalculation } from "./useCalculation";
 
 export const Calculator = () => {
 	const {
-		calculation,
 		insertNumber,
 		insertOperator,
 		result,
 		displayedCalculation,
 		insertBracket,
-		clearAll
+		clearAll,
+		calculate
 	} = useCalculation();
 	return (
 		<Wrapper>
@@ -24,6 +24,7 @@ export const Calculator = () => {
 				insertNumber={insertNumber}
 				insertOperator={insertOperator}
 				insertBracket={insertBracket}
+				calculate={calculate}
 			/>
 		</Wrapper>
 	);
