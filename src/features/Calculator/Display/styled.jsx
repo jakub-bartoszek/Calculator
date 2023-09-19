@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 	padding: 10px;
 `;
 
-export const PreviousCalculation = styled.div`
+export const Result = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;

@@ -1,12 +1,10 @@
-import {
-	CurrentCalculation,
-	PreviousCalculation,
-	Wrapper
-} from "./styled";
+import { CurrentCalculation, Result, Wrapper } from "./styled";
 
-export const Display = () => (
-	<Wrapper>
-		<PreviousCalculation>240</PreviousCalculation> {/* just to demo the displayed numbers */}
-		<CurrentCalculation>15+12</CurrentCalculation>
-	</Wrapper>
-);
+export const Display = ({ calculation }) => {
+	return (
+		<Wrapper>
+			<Result></Result>
+			<CurrentCalculation>{calculation.firstNumber}</CurrentCalculation>
+		</Wrapper>
+	);
+};
