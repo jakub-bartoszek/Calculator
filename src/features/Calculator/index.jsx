@@ -4,11 +4,18 @@ import { Display } from "./Display";
 import { useCalculation } from "./useCalculation";
 
 export const Calculator = () => {
-	const { calculation, insertNumber } = useCalculation();
+	const { calculation, insertNumber, insertOperator, result } =
+		useCalculation();
 	return (
 		<Wrapper>
-			<Display calculation={calculation} />
-			<Keyboard insertNumber={insertNumber} />
+			<Display
+				calculation={calculation}
+				result={result}
+			/>
+			<Keyboard
+				insertNumber={insertNumber}
+				insertOperator={insertOperator}
+			/>
 		</Wrapper>
 	);
 };
