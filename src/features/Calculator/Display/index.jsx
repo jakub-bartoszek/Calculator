@@ -3,12 +3,12 @@ import { CurrentCalculation, Result, Wrapper } from "./styled";
 export const Display = ({
 	displayedCalculation,
 	result,
-	calculationLength
+	calculation
 }) => {
 	return (
 		<Wrapper>
 			<Result>{result}</Result>
-			<CurrentCalculation variant={calculationLength}>
+			<CurrentCalculation variant={calculation.length}>
 				{displayedCalculation}
 			</CurrentCalculation>
 		</Wrapper>

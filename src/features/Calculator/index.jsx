@@ -12,14 +12,14 @@ export const Calculator = () => {
 		insertBracket,
 		clearAll,
 		calculate,
-		calculationLength
+		calculation
 	} = useCalculation();
 	return (
 		<Wrapper>
 			<Display
 				displayedCalculation={displayedCalculation}
 				result={result}
-				calculationLength={calculationLength}
+				calculation={calculation}
 			/>
 			<Keyboard
 				clearAll={clearAll}

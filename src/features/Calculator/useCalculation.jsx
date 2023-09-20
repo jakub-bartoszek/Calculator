@@ -1,57 +1,52 @@
 import { useEffect, useState } from "react";
 
 export const useCalculation = () => {
-	const [calculation, setCalculation] = useState([]);
-	const [displayedCalculation, setDisplayedCalculation] = useState(
-		[]
-	);
+	const [calculation, setCalculation] = useState("");
+	const [displayedCalculation, setDisplayedCalculation] =
+		useState("");
 	const [isBeforeNumber, setIsBeforeNumber] = useState(true);
-	const [result, setResult] = useState(null);
+	const [result, setResult] = useState("");
 	const [areBracketsEven, setAreBracketsEven] = useState(true);
-	const [calculationLength, setCalculationLength] = useState(0);
-
-	useEffect(() => {
-		setCalculationLength(displayedCalculation.length);
-	}, [displayedCalculation]);
 
 	const calculate = () => {
-		setCalculation([result]);
-		setDisplayedCalculation([result]);
+		setCalculation(result);
+		setDisplayedCalculation(result);
 	};
 
+	useEffect(() => {
+		console.log(displayedCalculation.length);
+	}, [displayedCalculation]);
+
 	const insertNumber = (number) => {
-		if (calculationLength < 21) {
-			setCalculation((calculation) => [...calculation, number]);
-			setDisplayedCalculation((displayedCalculation) => [
-				...displayedCalculation,
-				number
-			]);
+		if (calculation.length < 21) {
+			setCalculation((calculation) => calculation.concat(number));
+			setDisplayedCalculation((displayedCalculation) =>
+				displayedCalculation.concat(number)
+			);
 			setIsBeforeNumber(true);
 		}
 	};
 
 	const insertBracket = () => {
-		if (calculationLength < 21) {
+		if (calculation.length < 21) {
 			if (areBracketsEven === true) {
-				setCalculation((calculation) => [...calculation, "("]);
-				setDisplayedCalculation((displayedCalculation) => [
-					...displayedCalculation,
-					"("
-				]);
+				setCalculation((calculation) => calculation.concat("("));
+				setDisplayedCalculation((displayedCalculation) =>
+					displayedCalculation.concat("(")
+				);
 				setAreBracketsEven(false);
 			} else {
-				setCalculation((calculation) => [...calculation, ")"]);
-				setDisplayedCalculation((displayedCalculation) => [
-					...displayedCalculation,
-					")"
-				]);
+				setCalculation((calculation) => calculation.concat(")"));
+				setDisplayedCalculation((displayedCalculation) =>
+					displayedCalculation.concat(")")
+				);
 				setAreBracketsEven(true);
 			}
 		}
 	};
 
 	const insertOperator = (operator) => {
-		if (calculationLength < 21) {
+		if (calculation.length < 21) {
 			if (isBeforeNumber === true) {
 				const setMathSign = () => {
 					switch (operator) {
@@ -68,25 +63,28 @@ export const useCalculation = () => {
 					}
 				};
 
-				setCalculation((calculation) => [...calculation, operator]);
-				setDisplayedCalculation((displayedCalculation) => [
-					...displayedCalculation,
-					setMathSign()
-				]);
+				setCalculation((calculation) => calculation.concat(operator));
+				setDisplayedCalculation((displayedCalculation) =>
+					displayedCalculation.concat(setMathSign())
+				);
 			}
 			setIsBeforeNumber(false);
 		}
 	};
 
 	const clearAll = () => {
-		setCalculation([]);
-		setDisplayedCalculation([]);
+		setCalculation("");
+		setDisplayedCalculation("");
 		setResult(null);
 	};
 
 	useEffect(() => {
 		try {
-			setResult(eval(calculation.join("")));
+			setResult(
+				eval(calculation)
+					.toFixed(2)
+					.replace(/\.0+$|(\.\d*[1-9])(0+)$/, "")
+			);
 		} catch {
 			setResult("");
 		}
@@ -101,6 +99,5 @@ export const useCalculation = () => {
 		insertBracket,
 		clearAll,
 		calculate,
-		calculationLength
 	};
 };
