@@ -25,7 +25,7 @@ export const CurrentCalculation = styled.div`
 	transition: font-size 0.3s;
 	font-size: ${(props) => () => {
 		if (props.variant > 13) {
-			return "32";
+			return "43";
 		} else if (props.variant > 9) {
 			return "48";
 		} else {

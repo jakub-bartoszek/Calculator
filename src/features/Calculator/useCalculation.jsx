@@ -13,12 +13,8 @@ export const useCalculation = () => {
 		setDisplayedCalculation(result);
 	};
 
-	useEffect(() => {
-		console.log(displayedCalculation.length);
-	}, [displayedCalculation]);
-
 	const insertNumber = (number) => {
-		if (calculation.length < 21) {
+		if (displayedCalculation.length < 16) {
 			setCalculation((calculation) => calculation.concat(number));
 			setDisplayedCalculation((displayedCalculation) =>
 				displayedCalculation.concat(number)
@@ -28,7 +24,7 @@ export const useCalculation = () => {
 	};
 
 	const insertBracket = () => {
-		if (calculation.length < 21) {
+		if (displayedCalculation.length < 16) {
 			if (areBracketsEven === true) {
 				setCalculation((calculation) => calculation.concat("("));
 				setDisplayedCalculation((displayedCalculation) =>
@@ -46,7 +42,7 @@ export const useCalculation = () => {
 	};
 
 	const insertOperator = (operator) => {
-		if (calculation.length < 21) {
+		if (displayedCalculation.length < 16) {
 			if (isBeforeNumber === true) {
 				const setMathSign = () => {
 					switch (operator) {
