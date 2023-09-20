@@ -11,13 +11,15 @@ export const Calculator = () => {
 		displayedCalculation,
 		insertBracket,
 		clearAll,
-		calculate
+		calculate,
+		calculationLength
 	} = useCalculation();
 	return (
 		<Wrapper>
 			<Display
 				displayedCalculation={displayedCalculation}
 				result={result}
+				calculationLength={calculationLength}
 			/>
 			<Keyboard
 				clearAll={clearAll}
