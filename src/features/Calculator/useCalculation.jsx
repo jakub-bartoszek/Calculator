@@ -9,6 +9,7 @@ export const useCalculation = () => {
 	const [areBracketsEven, setAreBracketsEven] = useState(true);
 
 	const calculate = () => {
+		setIsBeforeNumber(true);
 		setCalculation(result);
 		setDisplayedCalculation(result);
 	};
@@ -42,7 +43,10 @@ export const useCalculation = () => {
 	};
 
 	const insertOperator = (operator) => {
-		if (displayedCalculation.length < 16) {
+		if (
+			displayedCalculation.length < 16 &&
+			(displayedCalculation.length > 0 || operator === "-")
+		) {
 			if (isBeforeNumber === true) {
 				const setMathSign = () => {
 					switch (operator) {
@@ -54,11 +58,12 @@ export const useCalculation = () => {
 							return "×";
 						case "/":
 							return ":";
+						case "**2":
+							return "²";
 						default:
 							return "";
 					}
 				};
-
 				setCalculation((calculation) => calculation.concat(operator));
 				setDisplayedCalculation((displayedCalculation) =>
 					displayedCalculation.concat(setMathSign())
@@ -72,6 +77,22 @@ export const useCalculation = () => {
 		setCalculation("");
 		setDisplayedCalculation("");
 		setResult(null);
+	};
+
+	const removeLast = () => {
+		setCalculation(calculation.slice(0, -1));
+		setDisplayedCalculation(displayedCalculation.slice(0, -1));
+		if (
+			displayedCalculation.slice(-2) === "+" ||
+			displayedCalculation.slice(-2) === "-" ||
+			displayedCalculation.slice(-2) === "×" ||
+			displayedCalculation.slice(-2) === ":" ||
+			displayedCalculation.slice(-2) === "²"
+		) {
+			setIsBeforeNumber(false);
+		} else {
+			setIsBeforeNumber(true);
+		}
 	};
 
 	useEffect(() => {
@@ -95,5 +116,6 @@ export const useCalculation = () => {
 		insertBracket,
 		clearAll,
 		calculate,
+		removeLast
 	};
 };

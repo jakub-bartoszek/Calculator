@@ -11,7 +11,8 @@ export const Calculator = () => {
 		displayedCalculation,
 		insertBracket,
 		clearAll,
-		calculate
+		calculate,
+		removeLast
 	} = useCalculation();
 	return (
 		<Wrapper>
@@ -25,6 +26,7 @@ export const Calculator = () => {
 				insertOperator={insertOperator}
 				insertBracket={insertBracket}
 				calculate={calculate}
+				removeLast={removeLast}
 			/>
 		</Wrapper>
 	);
