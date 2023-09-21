@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Button = styled.button`
-	font-size: 24px;
+	font-size: 32px;
 
 	color: white;
 	background-color: #00000050;
