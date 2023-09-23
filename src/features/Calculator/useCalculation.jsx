@@ -83,11 +83,16 @@ export const useCalculation = () => {
 		setCalculation(calculation.slice(0, -1));
 		setDisplayedCalculation(displayedCalculation.slice(0, -1));
 		if (
-			displayedCalculation.slice(-2) === "+" ||
-			displayedCalculation.slice(-2) === "-" ||
-			displayedCalculation.slice(-2) === "×" ||
-			displayedCalculation.slice(-2) === ":" ||
-			displayedCalculation.slice(-2) === "²"
+			displayedCalculation.charAt(displayedCalculation.length - 2) ===
+				"+" ||
+			displayedCalculation.charAt(displayedCalculation.length - 2) ===
+				"-" ||
+			displayedCalculation.charAt(displayedCalculation.length - 2) ===
+				"×" ||
+			displayedCalculation.charAt(displayedCalculation.length - 2) ===
+				":" ||
+			displayedCalculation.charAt(displayedCalculation.length - 2) ===
+				"²"
 		) {
 			setIsBeforeNumber(false);
 		} else {
