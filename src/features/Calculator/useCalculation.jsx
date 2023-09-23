@@ -6,7 +6,6 @@ export const useCalculation = () => {
 		useState("");
 	const [isBeforeNumber, setIsBeforeNumber] = useState(true);
 	const [result, setResult] = useState("");
-	const [areBracketsEven, setAreBracketsEven] = useState(true);
 
 	const calculate = () => {
 		setIsBeforeNumber(true);
@@ -24,21 +23,12 @@ export const useCalculation = () => {
 		}
 	};
 
-	const insertBracket = () => {
+	const insertBracket = (bracket) => {
 		if (displayedCalculation.length < 16) {
-			if (areBracketsEven === true) {
-				setCalculation((calculation) => calculation.concat("("));
+				setCalculation((calculation) => calculation.concat(bracket));
 				setDisplayedCalculation((displayedCalculation) =>
-					displayedCalculation.concat("(")
+					displayedCalculation.concat(bracket)
 				);
-				setAreBracketsEven(false);
-			} else {
-				setCalculation((calculation) => calculation.concat(")"));
-				setDisplayedCalculation((displayedCalculation) =>
-					displayedCalculation.concat(")")
-				);
-				setAreBracketsEven(true);
-			}
 		}
 	};
 

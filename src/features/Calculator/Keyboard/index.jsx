@@ -1,4 +1,12 @@
-import { Clear, Equals, Operator, Wrapper } from "./styled";
+import {
+	Bracket,
+	Brackets,
+	BracketsBox,
+	Clear,
+	Equals,
+	Operator,
+	Wrapper
+} from "./styled";
 import { Number } from "./styled";
 
 export const Keyboard = ({
@@ -13,7 +21,13 @@ export const Keyboard = ({
 		<Wrapper>
 			<Clear onClick={() => removeLast()}>C</Clear>
 			<Operator>√</Operator>
-			<Operator onClick={() => {insertOperator("**2")}}>☐²</Operator>
+			<Operator
+				onClick={() => {
+					insertOperator("**2");
+				}}
+			>
+				☐²
+			</Operator>
 			<Operator onClick={() => insertOperator("/")}>:</Operator>
 			<Number onClick={() => insertNumber(7)}>7</Number>
 			<Number onClick={() => insertNumber(8)}>8</Number>
@@ -27,7 +41,13 @@ export const Keyboard = ({
 			<Number onClick={() => insertNumber(2)}>2</Number>
 			<Number onClick={() => insertNumber(3)}>3</Number>
 			<Operator onClick={() => insertOperator("+")}>+</Operator>
-			<Operator onClick={insertBracket}>()</Operator>
+			<Brackets tabIndex={0}>
+				&#40;&#41;
+				<BracketsBox>
+					<Bracket onClick={() => insertBracket("(")}>&#40;</Bracket>
+					<Bracket onClick={() => insertBracket(")")}>&#41;</Bracket>
+				</BracketsBox>
+			</Brackets>
 			<Number onClick={() => insertNumber(0)}>0</Number>
 			<Number onClick={() => insertNumber(".")}>,</Number>
 			<Equals onClick={() => calculate()}>=</Equals>
