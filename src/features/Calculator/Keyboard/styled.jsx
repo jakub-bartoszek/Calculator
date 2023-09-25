@@ -39,8 +39,11 @@ export const BracketsBox = styled.div`
 	display: flex;
 	position: absolute;
 	top: -30px;
-	scale: 0;
 	transition: scale 0.3s;
+	scale: 0;
+	&:focus-within {
+		scale: 1;
+	}
 `;
 
 export const Bracket = styled.button`
@@ -59,17 +62,9 @@ export const Bracket = styled.button`
 		scale: 105%;
 		background-color: #230429;
 	}
-	&:focus ${BracketsBox} {
-		scale: 1;
-	}
-	&:focus-visible ${BracketsBox} {
-		scale: 1;
-	}
-	&:focus-within ${BracketsBox} {
-		scale: 1;
-	}
-	&:active ${BracketsBox} {
-		scale: 1;
+	&:focus {
+		scale: 105%;
+		background-color: #230429;
 	}
 `;
 
@@ -80,9 +75,6 @@ export const Brackets = styled.div`
 	justify-content: center;
 	position: relative;
 	&:focus ${BracketsBox} {
-		scale: 1;
-	}
-	&:hover ${BracketsBox} {
 		scale: 1;
 	}
 `;
