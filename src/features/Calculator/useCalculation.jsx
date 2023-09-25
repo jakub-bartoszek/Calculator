@@ -25,10 +25,10 @@ export const useCalculation = () => {
 
 	const insertBracket = (bracket) => {
 		if (displayedCalculation.length < 16) {
-				setCalculation((calculation) => calculation.concat(bracket));
-				setDisplayedCalculation((displayedCalculation) =>
-					displayedCalculation.concat(bracket)
-				);
+			setCalculation((calculation) => calculation.concat(bracket));
+			setDisplayedCalculation((displayedCalculation) =>
+				displayedCalculation.concat(bracket)
+			);
 		}
 	};
 
@@ -50,6 +50,8 @@ export const useCalculation = () => {
 							return ":";
 						case "**2":
 							return "²";
+						case "**3":
+							return "³";
 						default:
 							return "";
 					}

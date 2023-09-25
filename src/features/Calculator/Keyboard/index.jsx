@@ -5,6 +5,9 @@ import {
 	Clear,
 	Equals,
 	Operator,
+	Power,
+	Powers,
+	PowersBox,
 	Wrapper
 } from "./styled";
 import { Number } from "./styled";
@@ -21,13 +24,26 @@ export const Keyboard = ({
 		<Wrapper>
 			<Clear onClick={() => removeLast()}>C</Clear>
 			<Operator>√</Operator>
-			<Operator
-				onClick={() => {
-					insertOperator("**2");
-				}}
-			>
+			<Powers tabIndex={0}>
 				☐²
-			</Operator>
+				<PowersBox>
+					<Power
+						onClick={() => {
+							insertOperator("**2");
+						}}
+					>
+						☐²
+					</Power>
+					<Power
+						onClick={() => {
+							insertOperator("**3");
+						}}
+					>
+						☐³
+					</Power>
+					<Power>☐ˣ</Power>
+				</PowersBox>
+			</Powers>
 			<Operator onClick={() => insertOperator("/")}>:</Operator>
 			<Number onClick={() => insertNumber(7)}>7</Number>
 			<Number onClick={() => insertNumber(8)}>8</Number>

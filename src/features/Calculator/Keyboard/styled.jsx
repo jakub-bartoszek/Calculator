@@ -24,15 +24,7 @@ export const buttonStyles = () => css`
 	}
 `;
 
-export const Number = styled.button`
-	${buttonStyles}
-`;
-
-export const Operator = styled.button`
-	${buttonStyles}
-`;
-
-export const BracketsBox = styled.div`
+export const subButtonBoxStyles = () => css`
 	gap: 3px;
 	background: none;
 	border: none;
@@ -46,7 +38,7 @@ export const BracketsBox = styled.div`
 	}
 `;
 
-export const Bracket = styled.button`
+export const subButtonStyles = () => css`
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -68,6 +60,44 @@ export const Bracket = styled.button`
 	}
 `;
 
+export const Number = styled.button`
+	${buttonStyles}
+`;
+
+export const Operator = styled.button`
+	${buttonStyles}
+`;
+
+export const PowersBox = styled.div`
+	${subButtonBoxStyles}
+`;
+
+export const Powers = styled.div`
+	${buttonStyles}
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	&:focus ${PowersBox} {
+		scale: 1;
+	}
+	&:hover ${PowersBox} {
+		scale: 1;
+	}
+`;
+
+export const Power = styled.button`
+	${subButtonStyles}
+`;
+
+export const BracketsBox = styled.div`
+	${subButtonBoxStyles}
+`;
+
+export const Bracket = styled.button`
+	${subButtonStyles}
+`;
+
 export const Brackets = styled.div`
 	${buttonStyles}
 	display: flex;
@@ -75,6 +105,9 @@ export const Brackets = styled.div`
 	justify-content: center;
 	position: relative;
 	&:focus ${BracketsBox} {
+		scale: 1;
+	}
+	&:hover ${BracketsBox} {
 		scale: 1;
 	}
 `;
