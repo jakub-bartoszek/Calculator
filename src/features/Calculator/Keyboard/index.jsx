@@ -41,7 +41,6 @@ export const Keyboard = ({
 					>
 						☐³
 					</Power>
-					<Power>☐ˣ</Power>
 				</PowersBox>
 			</Powers>
 			<Operator onClick={() => insertOperator("/")}>:</Operator>
