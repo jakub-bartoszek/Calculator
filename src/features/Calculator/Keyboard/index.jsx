@@ -22,8 +22,9 @@ export const Keyboard = ({
 }) => {
 	return (
 		<Wrapper>
-			<Clear onClick={() => removeLast()}>C</Clear>
-			<Operator>√</Operator>
+			<Clear onClick={() => clearAll()}>AC</Clear>
+
+			<Clear onClick={() => removeLast()}>⌫</Clear>
 			<Powers tabIndex={0}>
 				☐²
 				<PowersBox>
