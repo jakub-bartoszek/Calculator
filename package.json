@@ -2,7 +2,7 @@
   "name": "calculator-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jakub-bartoszek-developer.github.io/Calculator-React/",
+  "homepage": "https://jakub-bartoszek.github.io/Calculator/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
