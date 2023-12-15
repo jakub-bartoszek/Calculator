@@ -14,6 +14,7 @@ export const Calculator = () => {
   calculate,
   removeLast
  } = useCalculation();
+ 
  return (
   <Wrapper>
    <Display
